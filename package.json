@@ -1,17 +1,14 @@
 {
   "name": "@prosky/bootstrap",
-  "version": "1.0.0",
+  "version": "2.0.1",
   "description": "Native JavaScript for Bootstrap, the sweetest JavaScript library without jQuery.",
   "author": "Jan Proskovec",
-  "main": "src/index.js",
+  "main": "index.js",
   "type": "library",
   "license": "MIT",
   "private": false,
   "dependencies": {},
   "scripts": {},
-  "exports": {
-    "./": "./src/"
-  },
   "repository": {
     "type": "git",
     "url": "git+https://github.com/prosky/bootstrap.git"
