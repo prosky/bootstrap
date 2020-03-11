@@ -5,9 +5,14 @@
   "author": "Jan Proskovec",
   "main": "src/index.js",
   "type": "library",
+  "license": "MIT",
   "dependencies": {},
   "scripts": {
     
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/prosky/bootstrap.git"
   },
   "browserslist": [
     "last 2 versions",
