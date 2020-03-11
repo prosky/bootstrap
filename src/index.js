@@ -1,16 +1,18 @@
 import {BSN} from "./utils";
 
-import "./components/alert";
-import "./components/button";
-import "./components/carousel";
-import "./components/collapse";
-import "./components/dropdown";
-import "./components/modal";
-import "./components/popover";
-import "./components/scrollspy";
-import "./components/tab";
-import "./components/toast";
-import "./components/tooltip";
+import Alert from "./components/alert";
+import Button from "./components/button";
+import Carousel from "./components/carousel";
+import Collapse from "./components/collapse";
+import Dropdown from "./components/dropdown";
+import Modal from "./components/modal";
+import Popover from "./components/popover";
+import Scrollspy from "./components/scrollspy";
+import Tab from "./components/tab";
+import Toast from "./components/toast";
+import Tooltip from "./components/tooltip";
 
 import "./init";
+
 export default BSN;
+export {Alert, Button, Carousel, Collapse, Dropdown, Modal, Popover, Scrollspy, Tab, Toast, Tooltip};

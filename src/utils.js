@@ -5,7 +5,7 @@ export const
 	body = 'body', // allow the library to be used in <head>
 
 	// Native Javascript for Bootstrap Global Object
-	BSN = globalObject.BSN = {},
+	BSN = {},
 	supports = BSN.supports = [],
 
 	// function toggle attributes
