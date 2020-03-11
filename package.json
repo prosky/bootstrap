@@ -6,9 +6,11 @@
   "main": "src/index.js",
   "type": "library",
   "license": "MIT",
+  "private": false,
   "dependencies": {},
-  "scripts": {
-    
+  "scripts": {},
+  "exports": {
+    "./": "./src/"
   },
   "repository": {
     "type": "git",

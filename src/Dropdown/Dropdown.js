@@ -25,7 +25,6 @@ import {
     focusEvent,
     keyupEvent, off, target, contains, indexOf, ariaExpanded, getElementsByTagName, tabindex, setFocus
 } from '../utils';
-import Alert from "./alert";
 /* Native Javascript for Bootstrap 4 | Dropdown
 ----------------------------------------------*/
 

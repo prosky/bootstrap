@@ -26,7 +26,6 @@ import {
     supports,
     supportTransitions, target
 } from '../utils';
-import Alert from "./alert";
 /* Native Javascript for Bootstrap 4 | Modal
 -------------------------------------------*/
 

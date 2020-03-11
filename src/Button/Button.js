@@ -19,7 +19,6 @@ import {
     setAttribute,
     supports, target, getElementsByTagName, focusEvent, changeEvent, stringButton, keyupEvent, keydownEvent
 } from '../utils';
-import Alert from "./alert";
 /* Native Javascript for Bootstrap 4 | Button
 ---------------------------------------------*/
 
