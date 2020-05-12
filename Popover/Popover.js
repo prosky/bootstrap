@@ -37,6 +37,7 @@ import {
     style, styleTip,
     supports,
     target,
+    top,
 } from '../utils';
 /* Native Javascript for Bootstrap 4 | Popover
 ----------------------------------------------*/
