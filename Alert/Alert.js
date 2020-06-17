@@ -23,17 +23,15 @@ import {
 
 // ALERT DEFINITION
 // ================
-var Alert = function (element) {
+const Alert = function (element) {
 
     // initialization element
     element = queryElement(element);
 
     // bind, target alert, duration and stuff
-    var self = this, component = 'alert',
+    let self = this, component = 'alert',
         alert = getClosest(element, '.' + component),
-        triggerHandler = function () {
-            hasClass(alert, 'fade') ? emulateTransitionEnd(alert, transitionEndHandler) : transitionEndHandler();
-        },
+
         // handlers
         clickHandler = function (e) {
             alert = getClosest(e[target], '.' + component);
@@ -44,6 +42,9 @@ var Alert = function (element) {
             bootstrapCustomEvent.call(alert, closedEvent, component);
             off(element, clickEvent, clickHandler); // detach it's listener
             alert[parentNode].removeChild(alert);
+        },
+        triggerHandler = function () {
+            hasClass(alert, 'fade') ? emulateTransitionEnd(alert, transitionEndHandler) : transitionEndHandler();
         };
 
     // public method

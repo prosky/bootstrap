@@ -44,13 +44,13 @@ import {
 
 // TAB DEFINITION
 // ==============
-var Tab = function (element, options) {
+const Tab = function (element, options) {
 
 	// initialization element
 	element = queryElement(element);
 
 	// DATA API
-	var heightData = element[getAttribute](dataHeight),
+	const heightData = element[getAttribute](dataHeight),
 
 		// strings
 		component = 'tab', height = 'height', float = 'float', isAnimating = 'isAnimating';
@@ -60,13 +60,13 @@ var Tab = function (element, options) {
 	this[height] = supportTransitions ? (options[height] || heightData === 'true') : false;
 
 	// bind, event targets
-	var self = this, next,
-		tabs = getClosest(element, '.nav'),
-		tabsContentContainer = false,
-		dropdown = tabs && queryElement('.dropdown-toggle', tabs),
-		activeTab, activeContent, nextContent, containerHeight, equalContents, nextHeight,
-
-		// trigger
+	const self = this;
+	let next;
+	const tabs = getClosest(element, '.nav');
+	let tabsContentContainer = false;
+	const dropdown = tabs && queryElement('.dropdown-toggle', tabs);
+	let activeTab, activeContent, nextContent, containerHeight, equalContents, nextHeight;
+	const // trigger
 		triggerEnd = function () {
 			tabsContentContainer[style][height] = '';
 			removeClass(tabsContentContainer, collapsing);
@@ -127,8 +127,9 @@ var Tab = function (element, options) {
 	tabs[isAnimating] = false;
 
 	// private methods
-	var getActiveTab = function () {
-			var activeTabs = getElementsByClassName(tabs, active), activeTab;
+	const getActiveTab = function () {
+			const activeTabs = getElementsByClassName(tabs, active);
+			let activeTab;
 			if (activeTabs[length] === 1 && !hasClass(activeTabs[0][parentNode], 'dropdown')) {
 				activeTab = activeTabs[0];
 			} else if (activeTabs[length] > 1) {
@@ -136,8 +137,8 @@ var Tab = function (element, options) {
 			}
 			return activeTab;
 		},
-		getTargetSelector = function (element){
-			return element[getAttribute](dataTarget)||element[getAttribute](href);
+		getTargetSelector = function (element) {
+			return element[getAttribute](dataTarget) || element[getAttribute](href);
 		},
 		getActiveContent = function () {
 			return queryElement(getTargetSelector(getActiveTab()));

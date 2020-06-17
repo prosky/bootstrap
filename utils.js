@@ -1,4 +1,4 @@
-export const
+export var
 	globalObject = typeof global !== 'undefined' ? global : this || window,
 	DOC = document,
 	HTML = DOC.documentElement,
@@ -158,12 +158,12 @@ export const
 		return [].slice.call(element[getElementsByCLASSNAME](classNAME));
 	},
 	queryElement = function (selector, parent) {
-		var lookUp = parent ? parent : DOC;
+		const lookUp = parent ? parent : DOC;
 		return typeof selector === 'object' ? selector : lookUp.querySelector(selector);
 	},
 	getClosest = function (element, selector) { //element is the element and selector is for the closest parent element to find
 		// source http://gomakethings.com/climbing-up-and-down-the-dom-tree-with-vanilla-javascript/
-		var firstChar = selector.charAt(0), selectorSubstring = selector.substr(1);
+		const firstChar = selector.charAt(0), selectorSubstring = selector.substr(1);
 		if (firstChar === '.') {// If selector is a class
 			for (; element && element !== DOC; element = element[parentNode]) { // Get closest match
 				if (queryElement(selector, element[parentNode]) !== null && hasClass(element, selectorSubstring)) {
@@ -198,9 +198,9 @@ export const
 // determine support for passive events
 	supportPassive = (function () {
 		// Test via a getter in the options object to see if the passive property is accessed
-		var result = false;
+		let result = false;
 		try {
-			var opts = Object.defineProperty({}, 'passive', {
+			const opts = Object.defineProperty({}, 'passive', {
 				get: function () {
 					result = true;
 				}
@@ -216,13 +216,14 @@ export const
 	passiveHandler = supportPassive ? {passive: true} : false,
 // transitions
 	getTransitionDurationFromElement = function (element) {
-		var duration = supportTransitions ? globalObject[getComputedStyle](element)[transitionDuration] : 0;
+		let duration = supportTransitions ? globalObject[getComputedStyle](element)[transitionDuration] : 0;
 		duration = parseFloat(duration);
 		duration = typeof duration === 'number' && !isNaN(duration) ? duration * 1000 : 0;
 		return duration; // we take a short offset to make sure we fire on the next frame after animation
 	},
 	emulateTransitionEnd = function (element, handler) { // emulateTransitionEnd since 2.0.4
-		var called = 0, duration = getTransitionDurationFromElement(element);
+		let called = 0;
+		const duration = getTransitionDurationFromElement(element);
 		duration ? one(element, transitionEndEvent, function (e) {
 				!called && handler(e), called = 1;
 			})
@@ -231,7 +232,7 @@ export const
 			}, 17);
 	},
 	bootstrapCustomEvent = function (eventName, componentName, related) {
-		var OriginalCustomEvent = new CustomEvent(eventName + '.bs.' + componentName);
+		const OriginalCustomEvent = new CustomEvent(eventName + '.bs.' + componentName);
 		OriginalCustomEvent.relatedTarget = related;
 		this.dispatchEvent(OriginalCustomEvent);
 	},
@@ -244,7 +245,7 @@ export const
 		}
 	},
 	styleTip = function (link, element, position, parent) { // both popovers and tooltips (target,tooltip,placement,elementToAppendTo)
-		var elementDimensions = {w: element[offsetWidth], h: element[offsetHeight]},
+		const elementDimensions = {w: element[offsetWidth], h: element[offsetHeight]},
 			windowWidth = (HTML[clientWidth] || DOC[body][clientWidth]),
 			windowHeight = (HTML[clientHeight] || DOC[body][clientHeight]),
 			rect = link[getBoundingClientRect](),
@@ -253,13 +254,11 @@ export const
 				y: parent[offsetTop] + parent[scrollTop]
 			},
 			linkDimensions = {w: rect[right] - rect[left], h: rect[bottom] - rect[top]},
-			isPopover = hasClass(element, 'popover'),
-			topPosition, leftPosition,
-
-			arrow = queryElement('.arrow', element),
-			arrowTop, arrowLeft, arrowWidth, arrowHeight,
-
-			halfTopExceed = rect[top] + linkDimensions.h / 2 - elementDimensions.h / 2 < 0,
+			isPopover = hasClass(element, 'popover');
+		let topPosition, leftPosition;
+		const arrow = queryElement('.arrow', element);
+		let arrowTop, arrowLeft, arrowWidth, arrowHeight;
+		const halfTopExceed = rect[top] + linkDimensions.h / 2 - elementDimensions.h / 2 < 0,
 			halfLeftExceed = rect[left] + linkDimensions.w / 2 - elementDimensions.w / 2 < 0,
 			halfRightExceed = rect[left] + elementDimensions.w / 2 + linkDimensions.w / 2 >= windowWidth,
 			halfBottomExceed = rect[top] + elementDimensions.h / 2 + linkDimensions.h / 2 >= windowHeight,
