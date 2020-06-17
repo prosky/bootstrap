@@ -112,6 +112,7 @@ export const
 	push = 'push',
 	tabindex = 'tabindex',
 	contains = 'contains',
+	href = 'href',
 
 	active = 'active',
 	showClass = 'show',

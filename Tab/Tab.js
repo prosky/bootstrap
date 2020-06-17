@@ -8,6 +8,7 @@ import {
 	currentTarget,
 	dataHeight,
 	dataToggle,
+	dataTarget,
 	emulateTransitionEnd,
 	getAttribute,
 	getClosest,
@@ -15,6 +16,7 @@ import {
 	hasClass,
 	hiddenEvent,
 	hideEvent,
+	href,
 	left,
 	length,
 	offsetHeight,
@@ -134,8 +136,11 @@ var Tab = function (element, options) {
 			}
 			return activeTab;
 		},
+		getTargetSelector = function (element){
+			return element[getAttribute](dataTarget)||element[getAttribute](href);
+		},
 		getActiveContent = function () {
-			return queryElement(getActiveTab()[getAttribute]('href'));
+			return queryElement(getTargetSelector(getActiveTab()));
 		},
 		// handler
 		clickHandler = function (e) {
@@ -147,7 +152,7 @@ var Tab = function (element, options) {
 	// public method
 	this.show = function () { // the tab we clicked is now the next tab
 		next = next || element;
-		nextContent = queryElement(next[getAttribute]('href')); //this is the actual object, the next tab content to activate
+		nextContent = queryElement(getTargetSelector(next)); //this is the actual object, the next tab content to activate
 		activeTab = getActiveTab();
 		activeContent = getActiveContent();
 

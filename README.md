@@ -1,5 +1,6 @@
 # Bootstrap
-Native JavaScript for Bootstrap v4
+Native JavaScript for Bootstrap v4.
+Allows use individual Bootstrap components separately.
 
 ## Usage
 ```javascript
